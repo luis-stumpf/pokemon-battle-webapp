@@ -3,6 +3,7 @@ import { isAxiosError } from 'axios';
 import pokemonClient from "../lib/axios";
 import {Pokemon, PokemonMove} from "pokenode-ts";
 import {calcHp, calcStat} from "../lib/utils/calcStats";
+import constants from "../lib/utils/constants";
 
 const pokemonRouter = Router();
 
@@ -20,10 +21,6 @@ const extractRelevantData = (pokemon: Pokemon, level: number) => {
   const {
     name,
     stats,
-    sprites: {
-      back_default: backSprite,
-      front_default: frontSprite,
-    },
     moves
   } = pokemon
 
@@ -35,8 +32,10 @@ const extractRelevantData = (pokemon: Pokemon, level: number) => {
   })
 
   const moveSet = randomMoveSet(moves);
+  const spriteBack = `${constants.POKEMON_DB.GIF_URL.back + name}.gif`
+  const spriteFront = `${constants.POKEMON_DB.GIF_URL.front + name}.gif`
 
-  return {name, statsByLevel, moveSet, backSprite, frontSprite};
+  return {name, statsByLevel, moveSet, spriteBack, spriteFront };
 }
 
 

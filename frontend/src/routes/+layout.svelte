@@ -7,6 +7,14 @@
 
     // Finally, your application's global stylesheet (sometimes labeled 'app.css')
     import '../app.postcss';
+    import {AppShell} from "@skeletonlabs/skeleton";
+    import Header from "$lib/components/Header.svelte";
 </script>
 
-<slot />
+<AppShell>
+    <svelte:fragment slot="header">
+        <Header></Header>
+    </svelte:fragment>
+    <svelte:fragment slot="sidebarLeft">Sidebar Left</svelte:fragment>
+    <slot />
+</AppShell>
