@@ -8,12 +8,13 @@
     let messages = [];
 
     onMount(() => {
+        /*
         io.on('message', (message) => {
             messages = [...messages, message];
         });
         io.on('name', (name) => {
             username = name;
-        });
+        });*/
     });
 
     function sendMessage() {

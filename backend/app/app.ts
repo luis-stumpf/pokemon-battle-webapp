@@ -23,6 +23,14 @@ app.use(express.urlencoded({ extended: false }));
 app.use('/', indexRouter);
 app.use('/pokemon/', pokemonRouter);
 
+io.use((socket, next) => {
+  const username = socket.handshake.auth.username;
+  if (!username) {
+    return next(new Error("invalid username"));
+  }
+  socket.data.username = username;
+  next();
+})
 
 io.on('connection', (socket) => {
   socket.on('message', (msg) => {
