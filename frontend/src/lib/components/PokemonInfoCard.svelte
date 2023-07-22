@@ -1,5 +1,6 @@
 <script lang="ts">
-    export let pokemon;
+	import type { Pokemon } from "$lib/types/pokemon";
+    export let pokemon: Pokemon;
 </script>
 
 <div class="card w-1/3">
